@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            width: 250px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .tracking { background: #d4edda; color: #155724; }
+        .stopped { background: #f8d7da; color: #721c24; }
+        .domain {
+            font-weight: bold;
+            margin: 10px 0;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+<h4>Time Tracker</h4>
+<div id="status" class="status">Loading...</div>
+<div id="currentDomain" class="domain"></div>
+<div id="sessionTime"></div>
+
+<script src="popup.js"></script>
+</body>
+</html>
