@@ -20,7 +20,7 @@ spring:
 #    enabled: false
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/mydb?currentSchema=time_tracker_schema
+    url: jdbc:postgresql://postgres:5432/mydb?currentSchema=time_tracker_schema
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
