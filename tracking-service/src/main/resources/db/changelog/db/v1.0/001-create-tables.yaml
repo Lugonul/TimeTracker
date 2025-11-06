@@ -1,0 +1,76 @@
+databaseChangeLog:
+- changeSet:
+    id: 1762455626543-1
+    author: ADmin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: application_entity_pkey
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: application_name
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: application_type
+            type: VARCHAR(255)
+        tableName: application_entity
+- changeSet:
+    id: 1762455626543-2
+    author: ADmin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: time_tracker_entity_pkey
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: device
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: end_time
+            type: TIMESTAMP WITHOUT TIME ZONE
+        - column:
+            constraints:
+              nullable: false
+            name: start_time
+            type: TIMESTAMP WITHOUT TIME ZONE
+        - column:
+            name: application_id
+            type: BIGINT
+        tableName: time_tracker_entity
+- changeSet:
+    id: 1762455626543-3
+    author: ADmin (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: application_id
+        baseTableName: time_tracker_entity
+        constraintName: fk3aoffxpqcosfv9jxhqe1lexo5
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: application_entity
+        referencedTableSchemaName: time_tracker_schema
+        validate: true
+

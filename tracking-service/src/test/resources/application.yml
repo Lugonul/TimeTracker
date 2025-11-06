@@ -1,0 +1,10 @@
+# В тестах используется testcontainers, временная бд не имеет схемы, при включении миграций тесты падают из-за отсутсвия схемы.
+# ddl-auto: update нужен для создания тестовых таблиц.
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  liquibase:
+    enabled: false

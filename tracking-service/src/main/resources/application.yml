@@ -9,10 +9,16 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
 
-      ddl-auto: update
+      ddl-auto: validate
     properties:
       hibernate:
         default_schema: *schema-name
+
+  liquibase:
+    change-log: classpath:/db/changelog/db/changelog-master.yaml
+    default-schema: *schema-name
+#    enabled: false
+
   datasource:
     url: jdbc:postgresql://localhost:5432/mydb?currentSchema=time_tracker_schema
     username: admin

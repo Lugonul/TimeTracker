@@ -14,7 +14,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     command: postgres -c listen_addresses='*' -c shared_preload_libraries=pg_stat_statements
     networks:
-      - backend-network  # Добавить подключение к сети
+      - backend-network
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U admin -d mydb" ]
       interval: 5s
@@ -22,5 +22,5 @@ services:
       retries: 10
 
 networks:
-  backend-network:  # Новая сеть для взаимодействия сервисов
+  backend-network:
     driver: bridge
