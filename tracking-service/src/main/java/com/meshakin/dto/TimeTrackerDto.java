@@ -31,7 +31,7 @@ public record TimeTrackerDto (
 ){
     @AssertTrue
     private boolean isEndTimeAfterStartTime() {
-        if (startTime == null || endTime == null) return true;
+        if (startTime == null || endTime == null) return false;
         return endTime.isAfter(startTime);
     }
 }
