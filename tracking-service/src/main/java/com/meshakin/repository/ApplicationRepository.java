@@ -10,8 +10,7 @@ import java.util.Optional;
 @Repository
 public interface ApplicationRepository extends JpaRepository<ApplicationEntity, Long> {
 
-    Optional<ApplicationEntity> findByApplicationNameAndApplicationType(
-            String applicationName,
-            ApplicationType applicationType
+    Optional<ApplicationEntity> findByApplicationName(
+            String applicationName
     );
 }

@@ -48,21 +48,19 @@ public class TimeTrackerServiceUnitTest {
     private ApplicationEntity appWithId = ApplicationEntity.builder()
             .id(1L)
             .applicationName("exampleName")
-            .applicationType(ApplicationType.BROWSER)
             .build();
 
     private ApplicationEntity appWithoutId = ApplicationEntity.builder()
             .id(null)
             .applicationName("exampleName")
-            .applicationType(ApplicationType.BROWSER)
             .build();
 
     private TimeTrackerEntity entity = new TimeTrackerEntity(
             null,
             ApplicationEntity.builder()
                     .applicationName("exampleName")
-                    .applicationType(ApplicationType.BROWSER)
                     .build(),
+            ApplicationType.BROWSER,
             Device.COMPUTER,
             LocalDateTime.of(2025, 6, 2, 22, 10),
             LocalDateTime.now()
@@ -73,8 +71,8 @@ public class TimeTrackerServiceUnitTest {
             ApplicationEntity.builder()
                     .id(1L)
                     .applicationName("exampleName")
-                    .applicationType(ApplicationType.BROWSER)
                     .build(),
+            ApplicationType.BROWSER,
             Device.COMPUTER,
             LocalDateTime.of(2025, 6, 2, 22, 10),
             LocalDateTime.now()
@@ -84,7 +82,7 @@ public class TimeTrackerServiceUnitTest {
     public void createTimeTrackerTest() {
         when(timeTrackerRepository.save(any())).thenReturn(savedEntity);
         when(applicationRepository
-                .findByApplicationNameAndApplicationType(appWithoutId.getApplicationName(), appWithoutId.getApplicationType()))
+                .findByApplicationName(appWithoutId.getApplicationName()))
                 .thenReturn(Optional.of(appWithId));
 
         TimeTrackerDto timeTrackerDto = timeTrackerService.create(timeTrackerMapper.toDto(entity));

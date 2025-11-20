@@ -2,3 +2,7 @@ databaseChangeLog:
   - include:
       file: v1.0/001-create-tables.yaml
       relativeToChangelogFile: true
+
+  - include:
+      file: v1.0/002-change-structure-because-bag-1.yaml
+      relativeToChangelogFile: true

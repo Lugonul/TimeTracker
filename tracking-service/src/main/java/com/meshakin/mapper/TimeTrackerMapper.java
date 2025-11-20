@@ -20,14 +20,12 @@ public abstract class TimeTrackerMapper {
     public abstract TimeTrackerEntity toEntity(TimeTrackerDto dto);
 
     @Mapping(target = "applicationName", source = "application.applicationName")
-    @Mapping(target = "applicationType", source = "application.applicationType")
     public abstract TimeTrackerDto toDto(TimeTrackerEntity entity);
 
     @Named("mapApplication")
     protected ApplicationEntity mapApplication(TimeTrackerDto dto) {
         return applicationService.findOrCreate(
-                dto.applicationName(),
-                dto.applicationType()
+                dto.applicationName()
         );
     }
 }

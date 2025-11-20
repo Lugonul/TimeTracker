@@ -14,14 +14,13 @@ public class ApplicationService {
 
     private final ApplicationRepository applicationRepository;
 
-    public ApplicationEntity findOrCreate (String applicationName, ApplicationType applicationType){
+    public ApplicationEntity findOrCreate (String applicationName){
         Optional<ApplicationEntity> existingApp = applicationRepository
-                .findByApplicationNameAndApplicationType(applicationName, applicationType);
+                .findByApplicationName(applicationName);
         if(existingApp.isPresent()) return existingApp.get();
 
         ApplicationEntity newApplication = ApplicationEntity.builder()
                 .applicationName(applicationName)
-                .applicationType(applicationType)
                 .build();
 
         return applicationRepository.save(newApplication);

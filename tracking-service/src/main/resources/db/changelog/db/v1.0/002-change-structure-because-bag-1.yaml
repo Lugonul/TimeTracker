@@ -1,0 +1,36 @@
+databaseChangeLog:
+ - changeSet:
+    id: 002-move-column
+    author: me
+    changes:
+      - addColumn:
+          tableName: time_tracker_entity
+          columns:
+            - column:
+                name: application_type
+                type: varchar
+                remarks: "move column from application_entity because of bag#1"
+
+      - update:
+          tableName: time_tracker_entity
+          columns:
+            - column:
+                name: application_type
+                valueComputed: (SELECT application_type FROM application_entity WHERE application_entity.id = time_tracker_entity.application_id)
+                remarks: "move data"
+
+      - dropColumn:
+          tableName: application_entity
+          columnName: application_type
+
+      - addNotNullConstraint:
+          tableName: time_tracker_entity
+          columnName: application_type
+
+      - addNotNullConstraint:
+          tableName: time_tracker_entity
+          columnName: application_id
+
+      - addUniqueConstraint:
+          tableName: application_entity
+          columnNames: application_name
